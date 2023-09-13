@@ -42,5 +42,5 @@ def task3():
 
 
 if __name__ == "__main__":
-    # print(task2())
+    # print(task1_2())
     print(task3())
