@@ -33,6 +33,10 @@ import os
 import re
 
 
+class UserNameError(Exception):
+    pass
+
+
 class NameValidator:
     def __init__(self, min_value=0, max_value=0, score_kind=None):
         self.min_value = min_value
@@ -49,12 +53,10 @@ class NameValidator:
     def __get__(self, instance, owner):
         return getattr(instance, self.param_name)
 
-
     def validate(self, value):
         if re.fullmatch(r"[A-ZА-Я][A-ZА-Яa-zа-я\s]+", value):
             return True
-        raise ValueError("Первая буква должна быть заглавной. Допустимы только буквы")
-
+        raise UserNameError("Первая буква должна быть заглавной. Допустимы только буквы")
 
 
 class Student:
